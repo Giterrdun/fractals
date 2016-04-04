@@ -22,11 +22,24 @@ public class SierpinskiTriangle {
 	}
    
 	public void sierpinski(Point2D.Double a, Point2D.Double b, Point2D.Double c, int n) {
-		if (n == 0 ){
-			
+		if (n <= 0 ){
+			return;
 		}
-	 drawTriangle(a,b,c,StdDraw.WHITE);
-	 sierpinski(a,b,(2,4),n-1);
+	   Point2D.Double bottom, newRight, newLeft;
+		bottom  = new Point2D.Double((b.x+c.x)/2, b.y);
+		newRight = new Point2D.Double((a.x+b.x) / 2, (a.y+b.y)/2);
+		newLeft = new Point2D.Double((a.x+c.x)/2,(a.y+c.y)/2);
+		
+		
+		sierpinski(a,newRight,newLeft,n-1);
+		sierpinski(newRight,b,bottom,n-1);
+		sierpinski(newLeft,bottom,c,n-1);
+		
+		drawTriangle(bottom,newRight,newLeft,StdDraw.BLACK);
+		
+		
+	 
+	
 	 
 	
 	 
@@ -40,6 +53,7 @@ public class SierpinskiTriangle {
 	}
 	
 	public void draw(int n) {
+		drawTriangle(top,right,left,StdDraw.WHITE);
 		sierpinski(top, right, left, n);
 	}
 	
