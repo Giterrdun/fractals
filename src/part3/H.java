@@ -19,7 +19,7 @@ public class H {
 		points[5] = new Point2D.Double(center.x+radius, center.y);
 	}
 	
-	public void drawH() {
+	public void draw() {
 		UltraDraw.line(points[0].x, points[0].y, points[3].x, points[3].y);
 		UltraDraw.line(points[1].x, points[1].y, points[2].x, points[2].y);
 		UltraDraw.line(points[4].x, points[4].y, points[5].x, points[5].y);
